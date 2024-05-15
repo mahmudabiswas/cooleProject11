@@ -4,12 +4,17 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
+import Home from "./Home/home";
 
 const Routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      {
+        index: true,
+        element: <Home />,
+      },
       {
         path: "/about",
         element: <About />,
