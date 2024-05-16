@@ -2,18 +2,21 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import UseAxious from "../hooks/useAxious";
 
 const LogIn = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const { logIn, user } = useContext(AuthContext);
-
+  const axios = UseAxious();
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     const logId = toast.loading("loading ,,,");
     try {
-      await logIn(email, password);
+      const user = await logIn(email, password);
+      console.log(user);
+      axios.post("/accessToken", { email: user.user.email });
       toast.success("log In success fully ...", { id: logId });
       navigate("/");
     } catch (error) {

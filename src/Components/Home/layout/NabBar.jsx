@@ -43,6 +43,9 @@ const NabBar = () => {
             {" "}
             Contact{" "}
           </NavLink>
+          <NavLink to="/services" className=" active btn btn-sm btn-primary">
+            Services
+          </NavLink>
           <NavLink to="/signUp" className=" active btn btn-sm btn-primary">
             Sign Up{" "}
           </NavLink>
