@@ -4,13 +4,12 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 const SignUp = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { createUser } = useContext(AuthContext);
+  const { createUser, user } = useContext(AuthContext);
+  console.log(user);
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await createUser(email, password).then((res) => {
-        console.log(res.user);
-      });
+      await createUser(email, password);
       console.log("created");
     } catch (error) {
       console.log(error);
